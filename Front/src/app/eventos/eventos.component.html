@@ -1,0 +1,30 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th class="h4">Nombre</th>
+            <th class="h4">Lugar</th>
+            <th class="h4">Direccion</th>
+            <th class="h4">Fecha Inicio</th>
+            <th class="h4">Fecha Final</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of eventos">
+        <td>
+            <dd>{{e.Nombre}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Lugar}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Direccion}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Fecha_Inicio}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Fecha_Final}}</dd>
+        </td>
+    </tr>
+    </tbody>
+</table>
