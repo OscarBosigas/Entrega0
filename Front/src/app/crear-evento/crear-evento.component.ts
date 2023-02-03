@@ -77,7 +77,8 @@ export class CrearEventoComponent implements OnInit {
       this.Fecha_Inicio,this.selectCategoria.id,this.selectTipo.id,res.id)).subscribe((data)=>{
       console.log(data)
    });
-    this.route.navigate(['crud'])
+   alert('Evento creado')
+    this.route.navigate(['lista'])
   }
   )}
 }

@@ -47,7 +47,8 @@ export class CrudComponent implements OnInit {
 
   onBorrar(id:number){
     this.crudService.eliminarEvento(id);
-    this.route.navigate(['crud'])
+    alert('Evento eliminado')
+    this.route.navigate(['lista'])
   }
 
   onAgregar(){
