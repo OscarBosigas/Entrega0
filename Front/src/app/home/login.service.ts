@@ -15,9 +15,14 @@ export class LogInService {
 
     contrasenaCache = ''
     nombreCache = ''
+    idCache = 0;
 
     public getCon2(){
       return this.contrasenaCache;
+    }
+
+    public getId2(){
+      return this.idCache;
     }
 
     public getNombre2(){
@@ -34,6 +39,7 @@ export class LogInService {
     }
 
     public getUsuario(usuario: Usuario):Observable<Usuario> {
+      this.idCache = usuario.id;
       return this.http.post<Usuario>('http://127.0.0.1:5000/usuarios', usuario)
     }
 

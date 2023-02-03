@@ -19,14 +19,14 @@ class SignIn(Resource):
 
 class CrearEventos(Resource):
     def post(self):
-        nuevo_evento = Eventos(Nombre=request.json["nombre"],
-        Lugar = request.json["lugar"],
-        Direccion = request.json["direccion"],
-        Fecha_Inicio = request.json["fecha_inicio"],
-        Fecha_Final = request.json["fecha_final"],
-        Id_Categoria = request.json["categoria"],
-        Id_Tipo = request.json["tipo"],
-        Id_Usuario = request.json["usuario"])
+        nuevo_evento = Eventos(Nombre=request.json["Nombre"],
+        Lugar = request.json["Lugar"],
+        Direccion = request.json["Direccion"],
+        Fecha_Inicio = request.json["Fecha_Inicio"],
+        Fecha_Final = request.json["Fecha_Final"],
+        Id_Categoria = request.json["Id_Categoria"],
+        Id_Tipo = request.json["Id_Tipo"],
+        Id_Usuario = request.json["Id_Usuario"])
         db.session.add(nuevo_evento)
         db.session.commit()
         return eventoSchema.dump(nuevo_evento)
