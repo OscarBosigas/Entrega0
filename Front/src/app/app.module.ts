@@ -5,16 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms';
+import { CrudComponent } from './crud/crud.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventosComponent
+    EventosComponent,
+    HomeComponent,
+    CrudComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,10 +6,12 @@
             <th class="h4">Direccion</th>
             <th class="h4">Fecha Inicio</th>
             <th class="h4">Fecha Final</th>
+            <th class="h4">Categoria</th>
+            <th class="h4">Tipo</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let e of eventos">
+        <tr *ngFor="let e of eventos; let i = index">
         <td>
             <dd>{{e.Nombre}}</dd>
         </td>
@@ -25,6 +27,13 @@
         <td>
             <dd>{{e.Fecha_Final}}</dd>
         </td>
-    </tr>
+        <td>
+            <dd>{{categoria[i]}}</dd>
+        </td>
+        <td>
+            <dd>{{tipo[i]}}</dd>
+        </td>
+        </tr>
     </tbody>
+
 </table>

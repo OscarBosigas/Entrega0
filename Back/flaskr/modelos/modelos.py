@@ -18,7 +18,7 @@ class Eventos(db.Model):
 
 class Usuarios(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(64))
+    nombre = db.Column(db.String(64), unique=True)
     contrasena = db.Column(db.String(32))
     eventos = db.relationship(Eventos, cascade = 'all, delete-orphan')
 
@@ -34,10 +34,24 @@ class UsuarioSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Usuarios
         include_relationships = True
+        include_pk = True
         load_instance = True
 
 class EventosSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Eventos
+        include_relationships = True
+        include_fk = True
+        load_instance = True
+
+class TiposSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Tipos
+        include_relationships = True
+        load_instance = True
+
+class CategoriasSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Categorias
         include_relationships = True
         load_instance = True

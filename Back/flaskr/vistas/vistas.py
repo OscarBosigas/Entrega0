@@ -4,14 +4,18 @@ from flask_jwt_extended import jwt_required, create_access_token
 from ..modelos import *
 
 eventoSchema = EventosSchema() 
+usaurioSchema = UsuarioSchema()
+tiposSchema = TiposSchema()
+categoriaSchema = CategoriasSchema()
 
 class SignIn(Resource):
     def post(self):
-        nuevo_usuario = Usuarios(nombre=request.json["nombre"], contrasena=request.json["contrasena"])
-        token_de_Acceso = create_access_token(identity=request.json["nombre"])
-        db.session.add(nuevo_usuario)
-        db.session.commit()
-        return {'menaje':'Usuario creado', 'token_de_acceso':token_de_Acceso}
+        if(request.json["nombre"] is None & request.json["contrasena"] is None):
+            nuevo_usuario = Usuarios(nombre=request.json["nombre"], contrasena=request.json["contrasena"])
+            token_de_Acceso = create_access_token(identity=request.json["nombre"])
+            db.session.add(nuevo_usuario)
+            db.session.commit()
+            return {'menaje':'Usuario creado', 'token_de_acceso':token_de_Acceso}
 
 class CrearEventos(Resource):
     def post(self):
@@ -34,13 +38,13 @@ class ListaEventos(Resource):
 
 
 class Evento(Resource):
-    def get(self, id_cancion):
-        return eventoSchema.dump(Eventos.query.get_or_404(id_cancion))
+    def get(self, id_evento):
+        return eventoSchema.dump(Eventos.query.get_or_404(id_evento))
 
 
 class Actualizar(Resource):
-    def put(self, id_cancion):
-        evento = Eventos.query.get_or404(id_cancion)
+    def put(self, id_evento):
+        evento = Eventos.query.get_or404(id_evento)
         evento.Nombre = request.json.get['nombre', evento.Nombre]
         evento.Lugar = request.json.get['lugar', evento.Lugar]
         evento.Direccion = request.json.get['direccion', evento.Direccion]
@@ -52,8 +56,8 @@ class Actualizar(Resource):
 
 
 class Eliminar(Resource):
-    def delete(self, id_cancion):
-        evento = Eventos.query.get_or_404(id_cancion)
+    def delete(self, id_evento):
+        evento = Eventos.query.get_or_404(id_evento)
         db.session.delete(evento)
         db.session.commit()
         return 'Eliminado exitosamente', 204
@@ -71,5 +75,23 @@ class LogIn(Resource):
         usuario = Usuarios.query.filter_by(nombre=u_nombre, contrasena=u_contrasena).first()
         if usuario:
             return {'mensaje':'Inicio de sesion'}, 200
+        else:
+            return {'mensaje':'Usuario no encontrado'}, 400
+
+class getTipo(Resource):
+    def get(self, id_tipo):
+        return tiposSchema.dump(Tipos.query.get_or_404(id_tipo))
+
+class getCategoria(Resource):
+    def get(self, id_categoria):
+        return categoriaSchema.dump(Categorias.query.get_or_404(id_categoria))
+
+class getUsuario(Resource):
+    def post(self):
+        u_nombre = request.json["nombre"]
+        u_contrasena = request.json["contrasena"]
+        usuario = Usuarios.query.filter_by(nombre=u_nombre, contrasena=u_contrasena).first()
+        if usuario:
+            return usaurioSchema.dump(Usuarios.query.filter_by(nombre=u_nombre, contrasena=u_contrasena).first())
         else:
             return {'mensaje':'Usuario no encontrado'}, 400

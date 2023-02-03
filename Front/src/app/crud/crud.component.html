@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Eventos</title>
+</head>
+<body>
+  <h1>Sistema de Eventos</h1>
+  <h3>Bienvenido {{nombre}}</h3>
+  <table class="table">
+    <thead>
+        <tr>
+            <th class="h4">Nombre</th>
+            <th class="h4">Lugar</th>
+            <th class="h4">Direccion</th>
+            <th class="h4">Fecha Inicio</th>
+            <th class="h4">Fecha Final</th>
+            <th class="h4">Categoria</th>
+            <th class="h4">Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let e of eventos; let i = index">
+        <td>
+            <dd>{{e.Nombre}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Lugar}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Direccion}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Fecha_Inicio}}</dd>
+        </td>
+        <td>
+            <dd>{{e.Fecha_Final}}</dd>
+        </td>
+        <td>
+            <dd>{{categoria[i]}}</dd>
+        </td>
+        <td>
+            <dd>{{tipo[i]}}</dd>
+        </td>
+        <td>
+          <a href="#" class="edit">Edit</a>
+          <a href="#" class="delete">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="add">Add New</button>
+</body>
+</html>
