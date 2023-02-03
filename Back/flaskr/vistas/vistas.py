@@ -63,7 +63,7 @@ class Eliminar(Resource):
         return 'Eliminado exitosamente', 204
 
 class EventosUsuario(Resource):
-    @jwt_required()
+  
     def get(self, id_usuario):
         usuario = Usuarios.query.get_or_404(id_usuario)
         return [eventoSchema.dump(al) for al in usuario.eventos]
@@ -89,9 +89,5 @@ class getCategoria(Resource):
 class getUsuario(Resource):
     def post(self):
         u_nombre = request.json["nombre"]
-        u_contrasena = request.json["contrasena"]
-        usuario = Usuarios.query.filter_by(nombre=u_nombre, contrasena=u_contrasena).first()
-        if usuario:
-            return usaurioSchema.dump(Usuarios.query.filter_by(nombre=u_nombre, contrasena=u_contrasena).first())
-        else:
-            return {'mensaje':'Usuario no encontrado'}, 400
+        return usaurioSchema.dump(Usuarios.query.filter_by(nombre=u_nombre).first())
+        

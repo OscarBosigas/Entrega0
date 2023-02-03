@@ -45,12 +45,12 @@
             <dd>{{tipo[i]}}</dd>
         </td>
         <td>
-          <a href="#" class="edit">Edit</a>
-          <a href="#" class="delete">Delete</a>
+          <button class="btn-primary">Editar</button>
+          <button (click)="onBorrar(e.Id)" class="btn-danger">Borrar</button>
         </td>
       </tr>
     </tbody>
   </table>
-  <button class="add">Add New</button>
+  <button class="btn-success">Agregar Evento</button>
 </body>
 </html>

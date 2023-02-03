@@ -26,10 +26,6 @@ api.add_resource(EventosUsuario, '/usuario/<int:id_usuario>/eventos')
 api.add_resource(LogIn, '/login')
 api.add_resource(getCategoria, '/categoria/<int:id_categoria>')
 api.add_resource(getTipo,'/tipo/<int:id_tipo>')
-api.add_resource(getUsuario, '/usuario/')
+api.add_resource(getUsuario, '/usuarios')
 
 jwt = JWTManager(app)
-
-@app.route("/")
-def hola():
-    return jsonify({"Message":"Hola mundo"})

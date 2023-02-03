@@ -18,11 +18,6 @@ export class EventosService {
         return this.http.get<Evento[]>('http://127.0.0.1:5000/lista')
     }
 
-    public getEventosUsuario(id:number):Observable<Evento[]>
-    {
-        return this.http.get<Evento[]>('http://127.0.0.1:5000//usuario/'+ id +'/eventos')
-    }
-
     public getTipo(id:number):Observable<Tipo>
     {
         return this.http.get<Tipo>('http://127.0.0.1:5000/tipo/' + id)

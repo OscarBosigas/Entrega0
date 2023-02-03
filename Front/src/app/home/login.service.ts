@@ -34,7 +34,7 @@ export class LogInService {
     }
 
     public getUsuario(usuario: Usuario):Observable<Usuario> {
-      return this.http.post<Usuario>('http://127.0.0.1:5000/usuario', usuario)
+      return this.http.post<Usuario>('http://127.0.0.1:5000/usuarios', usuario)
     }
 
     public singIn(usuario: Usuario)    {

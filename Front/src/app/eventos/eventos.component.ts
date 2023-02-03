@@ -11,7 +11,7 @@ export class EventosComponent implements OnInit {
 
   constructor(private eventoService: EventosService) { }
 
-  eventos: Array<Evento> = [new Evento("Evento 1","Paipa","Calle 27","2022","2022",1,1,1)];
+  eventos: Array<Evento> = [new Evento(0,"Evento 1","Paipa","Calle 27","2022","2022",1,1,1)];
   categoria: string[] = [''];
   tipo: string[] = [''];
 
