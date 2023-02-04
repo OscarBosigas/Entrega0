@@ -10,7 +10,6 @@ categoriaSchema = CategoriasSchema()
 
 class SignIn(Resource):
     def post(self):
-        if(request.json["nombre"] is None & request.json["contrasena"] is None):
             nuevo_usuario = Usuarios(nombre=request.json["nombre"], contrasena=request.json["contrasena"])
             token_de_Acceso = create_access_token(identity=request.json["nombre"])
             db.session.add(nuevo_usuario)
